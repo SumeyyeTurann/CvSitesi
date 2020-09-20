@@ -1,0 +1,38 @@
+﻿@model BlogCV.Models.Sınıf.Class1
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Adres</th>
+            <th>Resim</th>
+            <th>Telefon</th>
+            <th>Kullanıcı Tipi</th>
+            <th>Mail</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model.Deger1)
+        {
+        <tr>
+            <td>@x.ID</td>
+            <td>@x.Name</td>
+            <td>@x.Surname</td>
+            <td>@x.Address</td>
+            <td>@x.Image</td>
+            <td>@x.Phone</td>
+            <td>@x.Type</td>
+            <td>@x.Maıl</td>
+            <td><a href="/Hakkımda/VeriGetir/@x.ID" class="btn btn-warning">Güncelle</a></td>
+        </tr>
+        }
+    </tbody>
+</table>

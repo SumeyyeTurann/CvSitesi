@@ -1,0 +1,29 @@
+﻿@model BlogCV.Models.Entity.tblEducatıon
+@{
+    ViewBag.Title = "EgitimGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Guncelle", "Egitim", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ID)
+        @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Subtıtle)
+        @Html.TextBoxFor(m => m.Subtıtle, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Department)
+        @Html.TextBoxFor(m => m.Department, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.GPA)
+        @Html.TextAreaFor(m => m.GPA, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+
+

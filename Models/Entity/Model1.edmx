@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBMvcCvModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAbout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Surname" Type="varchar" MaxLength="30" />
+          <Property Name="Address" Type="varchar" MaxLength="100" />
+          <Property Name="Image" Type="varchar(max)" />
+          <Property Name="Phone" Type="varchar" MaxLength="20" />
+          <Property Name="Maıl" Type="varchar" MaxLength="50" />
+          <Property Name="About" Type="varchar(max)" />
+          <Property Name="Type" Type="nchar" MaxLength="10" />
+          <Property Name="Password" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Article" Type="varchar(max)" />
+          <Property Name="ArticleID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblEducatıon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Subtıtle" Type="varchar" MaxLength="50" />
+          <Property Name="Department" Type="varchar" MaxLength="50" />
+          <Property Name="GPA" Type="decimal" Precision="5" Scale="2" />
+          <Property Name="EduID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblExperıence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Subtitle" Type="varchar" MaxLength="50" />
+          <Property Name="Date" Type="varchar" MaxLength="50" />
+          <Property Name="Details" Type="varchar" MaxLength="2000" />
+          <Property Name="ExpID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblInterests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Interest" Type="varchar" MaxLength="200" />
+          <Property Name="InterestID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblSkılls">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Skıll" Type="varchar" MaxLength="50" />
+          <Property Name="SkıllID" Type="int" />
+        </EntityType>
+        <Association Name="FK_tblArticles_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblArticles" Type="Self.tblArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticles">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEducatıon_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblEducatıon" Type="Self.tblEducatıon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblEducatıon">
+              <PropertyRef Name="EduID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperıence_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblExperıence" Type="Self.tblExperıence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblExperıence">
+              <PropertyRef Name="ExpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInterests_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblInterests" Type="Self.tblInterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblInterests">
+              <PropertyRef Name="InterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSkılls_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblSkılls" Type="Self.tblSkılls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblSkılls">
+              <PropertyRef Name="SkıllID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMvcCvModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAbout" EntityType="Self.tblAbout" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblArticles" EntityType="Self.tblArticles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblEducatıon" EntityType="Self.tblEducatıon" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblExperıence" EntityType="Self.tblExperıence" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblInterests" EntityType="Self.tblInterests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSkılls" EntityType="Self.tblSkılls" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tblArticles_tblAbout" Association="Self.FK_tblArticles_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblArticles" EntitySet="tblArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEducatıon_tblAbout" Association="Self.FK_tblEducatıon_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblEducatıon" EntitySet="tblEducatıon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperıence_tblAbout" Association="Self.FK_tblExperıence_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblExperıence" EntitySet="tblExperıence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInterests_tblAbout" Association="Self.FK_tblInterests_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblInterests" EntitySet="tblInterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSkılls_tblAbout" Association="Self.FK_tblSkılls_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblSkılls" EntitySet="tblSkılls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBMvcCvModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAbout">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Maıl" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="About" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="tblArticles" Relationship="Self.FK_tblArticles_tblAbout" FromRole="tblAbout" ToRole="tblArticles" />
+          <NavigationProperty Name="tblEducatıon" Relationship="Self.FK_tblEducatıon_tblAbout" FromRole="tblAbout" ToRole="tblEducatıon" />
+          <NavigationProperty Name="tblExperıence" Relationship="Self.FK_tblExperıence_tblAbout" FromRole="tblAbout" ToRole="tblExperıence" />
+          <NavigationProperty Name="tblInterests" Relationship="Self.FK_tblInterests_tblAbout" FromRole="tblAbout" ToRole="tblInterests" />
+          <NavigationProperty Name="tblSkılls" Relationship="Self.FK_tblSkılls_tblAbout" FromRole="tblAbout" ToRole="tblSkılls" />
+        </EntityType>
+        <EntityType Name="tblArticles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Article" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ArticleID" Type="Int32" />
+          <NavigationProperty Name="tblAbout" Relationship="Self.FK_tblArticles_tblAbout" FromRole="tblArticles" ToRole="tblAbout" />
+        </EntityType>
+        <EntityType Name="tblEducatıon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subtıtle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="GPA" Type="Decimal" Precision="5" Scale="2" />
+          <Property Name="EduID" Type="Int32" />
+          <NavigationProperty Name="tblAbout" Relationship="Self.FK_tblEducatıon_tblAbout" FromRole="tblEducatıon" ToRole="tblAbout" />
+        </EntityType>
+        <EntityType Name="tblExperıence">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Subtitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Date" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Details" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="ExpID" Type="Int32" />
+          <NavigationProperty Name="tblAbout" Relationship="Self.FK_tblExperıence_tblAbout" FromRole="tblExperıence" ToRole="tblAbout" />
+        </EntityType>
+        <EntityType Name="tblInterests">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Interest" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="InterestID" Type="Int32" />
+          <NavigationProperty Name="tblAbout" Relationship="Self.FK_tblInterests_tblAbout" FromRole="tblInterests" ToRole="tblAbout" />
+        </EntityType>
+        <EntityType Name="tblSkılls">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Skıll" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="SkıllID" Type="Int32" />
+          <NavigationProperty Name="tblAbout" Relationship="Self.FK_tblSkılls_tblAbout" FromRole="tblSkılls" ToRole="tblAbout" />
+        </EntityType>
+        <Association Name="FK_tblArticles_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblArticles" Type="Self.tblArticles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblArticles">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblEducatıon_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblEducatıon" Type="Self.tblEducatıon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblEducatıon">
+              <PropertyRef Name="EduID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblExperıence_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblExperıence" Type="Self.tblExperıence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblExperıence">
+              <PropertyRef Name="ExpID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblInterests_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblInterests" Type="Self.tblInterests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblInterests">
+              <PropertyRef Name="InterestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tblSkılls_tblAbout">
+          <End Role="tblAbout" Type="Self.tblAbout" Multiplicity="0..1" />
+          <End Role="tblSkılls" Type="Self.tblSkılls" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblAbout">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tblSkılls">
+              <PropertyRef Name="SkıllID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBMvcCvEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="tblAbout" EntityType="Self.tblAbout" />
+          <EntitySet Name="tblArticles" EntityType="Self.tblArticles" />
+          <EntitySet Name="tblEducatıon" EntityType="Self.tblEducatıon" />
+          <EntitySet Name="tblExperıence" EntityType="Self.tblExperıence" />
+          <EntitySet Name="tblInterests" EntityType="Self.tblInterests" />
+          <EntitySet Name="tblSkılls" EntityType="Self.tblSkılls" />
+          <AssociationSet Name="FK_tblArticles_tblAbout" Association="Self.FK_tblArticles_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblArticles" EntitySet="tblArticles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblEducatıon_tblAbout" Association="Self.FK_tblEducatıon_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblEducatıon" EntitySet="tblEducatıon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblExperıence_tblAbout" Association="Self.FK_tblExperıence_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblExperıence" EntitySet="tblExperıence" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblInterests_tblAbout" Association="Self.FK_tblInterests_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblInterests" EntitySet="tblInterests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tblSkılls_tblAbout" Association="Self.FK_tblSkılls_tblAbout">
+            <End Role="tblAbout" EntitySet="tblAbout" />
+            <End Role="tblSkılls" EntitySet="tblSkılls" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBMvcCvModelStoreContainer" CdmEntityContainer="DBMvcCvEntities">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="DBMvcCvModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAbout">
+            <EntityTypeMapping TypeName="DBMvcCvModel.tblAbout">
+              <MappingFragment StoreEntitySet="tblAbout">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Maıl" ColumnName="Maıl" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblArticles">
+            <EntityTypeMapping TypeName="DBMvcCvModel.tblArticles">
+              <MappingFragment StoreEntitySet="tblArticles">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Article" ColumnName="Article" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblEducatıon">
+            <EntityTypeMapping TypeName="DBMvcCvModel.tblEducatıon">
+              <MappingFragment StoreEntitySet="tblEducatıon">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Subtıtle" ColumnName="Subtıtle" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="GPA" ColumnName="GPA" />
+                <ScalarProperty Name="EduID" ColumnName="EduID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblExperıence">
+            <EntityTypeMapping TypeName="DBMvcCvModel.tblExperıence">
+              <MappingFragment StoreEntitySet="tblExperıence">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ExpID" ColumnName="ExpID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblInterests">
+            <EntityTypeMapping TypeName="DBMvcCvModel.tblInterests">
+              <MappingFragment StoreEntitySet="tblInterests">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Interest" ColumnName="Interest" />
+                <ScalarProperty Name="InterestID" ColumnName="InterestID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSkılls">
+            <EntityTypeMapping TypeName="DBMvcCvModel.tblSkılls">
+              <MappingFragment StoreEntitySet="tblSkılls">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Skıll" ColumnName="Skıll" />
+                <ScalarProperty Name="SkıllID" ColumnName="SkıllID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

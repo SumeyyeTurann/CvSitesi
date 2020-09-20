@@ -1,0 +1,42 @@
+﻿@using BlogCV.Models.Entity
+@model List<tblArticles>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Konferans", FormMethod.Get))
+{
+    <p>
+        <b>Aranacak Değer:</b> @Html.TextBox("p")
+        <input type="submit" value="Ara"/>
+        <br />
+    </p>
+}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Makale</th>
+                <th>Sil</th>               
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+            <tr>
+                <th>@x.ID</th>
+                <th>@x.Title</th>
+                <td>@x.Article</td>
+                <td>@Html.ActionLink("Sil","Sil", new { id=x.ID}, new { @class="btn btn-danger", onclick="return confirm('Silmek İstiyor Musunuz?')"})</td>
+                <td><a href="/Makale/MakaleGetir/@x.ID" class="btn btn-info">Güncelle</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+<a href="/Makale/YeniMakale/" class="btn btn-success">Makale Ekle</a>

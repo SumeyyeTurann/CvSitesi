@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a4c7fb683b1a4a3194d0b99065e32083" Name="Diagram1">
+        <EntityTypeShape EntityType="DBMvcCvModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMvcCvModel.tblAbout" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMvcCvModel.tblArticles" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMvcCvModel.tblEducatıon" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMvcCvModel.tblExperıence" Width="1.5" PointX="3" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMvcCvModel.tblInterests" Width="1.5" PointX="3" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBMvcCvModel.tblSkılls" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="DBMvcCvModel.FK_tblArticles_tblAbout" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMvcCvModel.FK_tblEducatıon_tblAbout" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMvcCvModel.FK_tblExperıence_tblAbout" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMvcCvModel.FK_tblInterests_tblAbout" ManuallyRouted="false" />
+        <AssociationConnector Association="DBMvcCvModel.FK_tblSkılls_tblAbout" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,28 @@
+﻿@model BlogCV.Models.Entity.tblExperıence
+@{
+    ViewBag.Title = "DeneyimGetir";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@using(Html.BeginForm("Guncelle", "Deneyimler", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ID)
+        @Html.TextBoxFor(m => m.ID, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Subtitle)
+        @Html.TextBoxFor(m => m.Subtitle, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Date)
+        @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+        <br />
+        @Html.LabelFor(m => m.Details)
+        @Html.TextAreaFor(m => m.Details, new { @class = "form-control" })
+        <br />
+        <button class="btn btn-warning">Güncelle</button>
+    </div>
+}
+

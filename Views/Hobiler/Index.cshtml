@@ -1,0 +1,29 @@
+﻿@model BlogCV.Models.Sınıf.Class1
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Hobi</th>
+                <th>Sil</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model.Deger5)
+            {
+            <tr>
+                <td>@x.ID</td>
+                <td>@x.Interest</td>
+                <td><a href="/Hobiler/Sil/@x.ID" class="btn btn-danger">Sil</a></td>
+                <td><a href="/Hobiler/HobiGetir/@x.ID" class="btn btn-info">Güncelle</a></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+<a href="/Hobiler/YeniHobi/" class="btn btn-success">Hobi Ekle</a>
